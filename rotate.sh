@@ -4,18 +4,18 @@ PFORMAT="rgb24"
 VCODEC="-c:v qtrle"
 VFORMAT="pal"
 
-IMAGE="buttdick.png"
-DURATION=500
+IMAGE="video.mp4"
+DURATION=10
 FADEOUT=`echo $DURATION-30 | bc`
 SPEED1=90
 SPEED2=`echo $SPEED1*5/4 | bc`
 SPEED3=`echo $SPEED1*6/5 | bc`
 
 MODE=glow
-OUTPUT=joanna.avi
+OUTPUT="buttdick.avi"
 OPTS="-y -pix_fmt $PFORMAT $VCODEC -s $VFORMAT"
 
-exec ffmpeg -loop 1 -i $IMAGE -t $DURATION $OPTS -filter_complex "
+exec ffmpeg -i $IMAGE -t $DURATION $OPTS -filter_complex "
 split=3 [j1][j2], rotate=PI/3+2*PI*t/$SPEED1, negate, hue=h=20 [j3];
 [j1] rotate=PI/3+2*PI*t/$SPEED2, hflip, [j3] blend=all_mode=$MODE [r1];
 [j2] rotate=PI/3+2*PI*t/-$SPEED3, vflip, hue=h=10:s=1 [r2];
