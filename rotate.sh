@@ -1,13 +1,11 @@
 #!/bin/bash
 
-
-
 PFORMAT="rgb24"
 VCODEC="-c:v qtrle"
 VFORMAT="pal"
 
-IMAGE="nicolas_cage_2.jpg"
-DURATION=10
+IMAGE="buttdick.png"
+DURATION=180
 FADEOUT=`echo $DURATION-30 | bc`
 SPEED1=90
 SPEED2=`echo $SPEED1*5/4 | bc`
