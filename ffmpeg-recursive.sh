@@ -4,7 +4,7 @@
 
 
 # ffplay -i video.mp4 -vf "
-ffmpeg -i video.mp4 -vf "
+ffmpeg -i $1 -vf "
       scale=-2:720,
       tblend=all_mode=difference128,
       tblend=all_mode=difference128,
@@ -24,4 +24,4 @@ ffmpeg -i video.mp4 -vf "
       tblend=all_mode=difference128,
       tblend=all_mode=difference128,
       tblend=all_mode=difference128 
-   "  out.mp4
+   "  $1_out.mp4
