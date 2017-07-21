@@ -4,6 +4,8 @@
 
 rm -rf "$1_out.mp4"
 
+#add       scale=-2:720,     to scale
+
 # ffplay -i video.mp4 -vf "
 ffmpeg -i "$1" -vf "
       tblend=all_mode=difference128,
