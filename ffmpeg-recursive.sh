@@ -2,10 +2,10 @@
 # Deblocking 'spp' and 'average' filters used to mimimise strobing effects.
 # Due to latency issues, the result in ffplay will differ from a ffmpeg rendering.
 
+rm -rf "$1_out.mp4"
 
 # ffplay -i video.mp4 -vf "
-ffmpeg -i $1 -vf "
-      scale=-2:720,
+ffmpeg -i "$1" -vf "
       tblend=all_mode=difference128,
       tblend=all_mode=difference128,
       tblend=all_mode=difference128,
@@ -24,4 +24,4 @@ ffmpeg -i $1 -vf "
       tblend=all_mode=difference128,
       tblend=all_mode=difference128,
       tblend=all_mode=difference128 
-   "  $1_out.mp4
+   "  "$1_out.mp4"
