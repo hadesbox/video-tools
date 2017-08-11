@@ -2,7 +2,8 @@
 
 PFORMAT="rgb24"
 VCODEC="-c:v qtrle"
-VFORMAT="pal"
+#VFORMAT="pal"
+VFORMAT="1920:1080"
 
 IMAGE="$1"
 DURATION=180
@@ -12,7 +13,7 @@ SPEED2=`echo $SPEED1*5/4 | bc`
 SPEED3=`echo $SPEED1*6/5 | bc`
 
 MODE=glow
-OUTPUT="$1.mp4"
+OUTPUT="$1__XXXXXX_.mp4"
 OPTS="-y -pix_fmt $PFORMAT $VCODEC -s $VFORMAT"
 OPTS="-y -pix_fmt $PFORMAT -s $VFORMAT"
 
