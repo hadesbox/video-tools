@@ -6,14 +6,14 @@ VCODEC="-c:v qtrle"
 VFORMAT="1920:1080"
 
 IMAGE="$1"
-DURATION=180
+DURATION=600
 FADEOUT=`echo $DURATION-30 | bc`
 SPEED1=90
 SPEED2=`echo $SPEED1*5/4 | bc`
 SPEED3=`echo $SPEED1*6/5 | bc`
 
 MODE=glow
-OUTPUT="$1__XXXXXX_.mp4"
+OUTPUT="$1_$DURATION_.mp4"
 OPTS="-y -pix_fmt $PFORMAT $VCODEC -s $VFORMAT"
 OPTS="-y -pix_fmt $PFORMAT -s $VFORMAT"
 
