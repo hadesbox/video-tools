@@ -37,3 +37,27 @@ ffmpeg \
 
 
 # try with https://www.youtube.com/watch?v=Djdm7NaQheU
+
+
+# ORIGINAL WAS 
+# ffplay \
+#   -flags2 +export_mvs \
+#   -i video.mkv \
+#   -vf \
+#      "
+#         split=3 [original][original1][vectors];
+#         [vectors] codecview=mv=pf+bf+bb [vectors];
+#         [vectors][original] blend=all_mode=difference128,
+#            eq=contrast=7:brightness=-0.3,
+#            split=3 [yellow][pink][black];
+#         [yellow] curves=r='0/0 0.1/0.5 1/1':
+#                         g='0/0 0.1/0.5 1/1':
+#                         b='0/0 0.4/0.5 1/1' [yellow];
+#         [pink] curves=r='0/0 0.1/0.5 1/1':
+#                       g='0/0 0.1/0.3 1/1':
+#                       b='0/0 0.1/0.3 1/1' [pink];
+#         [original1][yellow] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [yellorig];
+#         [pink][black] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [pinkblack];
+#         [pinkblack][yellorig]blend=all_expr=if(gt(X\,W-Y*(W/H))\,A\,B)
+#      "
+
