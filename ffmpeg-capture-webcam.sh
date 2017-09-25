@@ -8,4 +8,4 @@ ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 output.mkv
 
 
 # To view
-#ffplay -f v4l2 -list_formats all -i /dev/video0
+#ffplay -f v4l2 -i /dev/video0
