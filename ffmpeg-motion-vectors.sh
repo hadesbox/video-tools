@@ -6,22 +6,12 @@ ffmpeg \
    -i $1 \
    -vf \
       "
-         split=3 [original][original1][vectors];
+         split=2 [original][vectors];
          [vectors] codecview=mv=pf+bf+bb [vectors];
          [vectors][original] blend=all_mode=difference128,
-            eq=contrast=7:brightness=-0.3,
-            split=3 [yellow][pink][black];
-         [yellow] curves=r='0/0 0.1/0.5 1/1':
-                         g='0/0 0.1/0.5 1/1':
-                         b='0/0 0.4/0.5 1/1' [yellow];
-         [pink] curves=r='0/0 0.1/0.5 1/1':
-                       g='0/0 0.1/0.3 1/1':
-                       b='0/0 0.1/0.3 1/1' [pink];
-         [original1][yellow] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [yellorig];
-         [pink][black] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [pinkblack];
-         [pinkblack][yellorig]blend=all_expr=if(gt(X\,W-Y*(W/H))\,A\,B)
+            eq=contrast=7:brightness=-0.3
       " \
-    "$1_out.mp4"
+    "$1_just_black.mp4"
 
 # Process:
 # 1: Three copies of input video are made
@@ -35,14 +25,12 @@ ffmpeg \
 # 7: Pink vectors stream and original vectors stream are combined diagonally
 # 8: The results of #6 and #7 are combined diagonally (opposite direction)
 
-
 # try with https://www.youtube.com/watch?v=Djdm7NaQheU
 
-
 # ORIGINAL WAS 
-# ffplay \
+#ffmpeg \
 #   -flags2 +export_mvs \
-#   -i video.mkv \
+#   -i $1 \
 #   -vf \
 #      "
 #         split=3 [original][original1][vectors];
@@ -57,7 +45,7 @@ ffmpeg \
 #                       g='0/0 0.1/0.3 1/1':
 #                       b='0/0 0.1/0.3 1/1' [pink];
 #         [original1][yellow] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [yellorig];
-#         [pink][black] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [pinkblack];
-#         [pinkblack][yellorig]blend=all_expr=if(gt(X\,W-Y*(W/H))\,A\,B)
-#      "
-
+#         [pink][black] blend=all_expr=if(gt(X\,Y*(W/H))\,A\,B) [out];
+#         [pinkblack][yellorig]overlay
+#      " \
+#    "$1_out.mp4"
