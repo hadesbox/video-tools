@@ -55,7 +55,7 @@
 
 #ffmpeg -i "$1" -an -c:v prores -profile:v 3 -vf yadif -vf scale=1920:1080 "$1_yadif_prores_1080p.mov"
 
-ffmpeg -i "$1" -an -c:v prores -profile:v 3 -vf yadif -vf scale=1920:1080:flags=bicubic "$1_yadif_prores_bicubic_1080p.mov"
+ffmpeg -i "$1" -c:v prores -profile:v 3 -vf yadif -vf scale=1920:1080:flags=bicubic "$1_yadif_prores_bicubic_1080p.mov"
 
 echo "********************************"
 echo "********************************"
